@@ -1,0 +1,10 @@
+.logo {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
