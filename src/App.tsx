@@ -6,13 +6,15 @@ import Navbar from './Customer/Components/Navbar/Navbar.tsx';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Home from './Customer/Pages/Home/Home.tsx';
+import Product from './Customer/Pages/Product/Product.tsx';
 
 function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <div>
         <Navbar/>
-        <Home/>
+        {/* <Home/> */}
+        <Product/>
       </div>
     </ThemeProvider>
   );

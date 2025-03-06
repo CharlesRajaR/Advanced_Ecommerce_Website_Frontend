@@ -14,7 +14,7 @@ const Deals = () => {
     cssEase: "linear"
   };
   return (
-    <div className='slider-container'>
+    <div className='slider-container -z-10'>
         <Slider {...settings}>
       {
         [1,1,1,1,1,1,1,1,1,1,1,1].map((item) =>{
