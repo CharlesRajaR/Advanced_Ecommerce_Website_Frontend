@@ -1,15 +1,21 @@
-import { Divider } from '@mui/material'
-import React from 'react'
+import { Divider, Pagination, useMediaQuery, useTheme } from '@mui/material'
+import React, { useState } from 'react'
 import ProductCard from './ProductCard.tsx'
 import FilterSection from './FilterSection.tsx'
 
 const Product = () => {
+  const theme = useTheme();
+   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
+   const [page, setPage] = useState(0);
+   const handlePageChange = (value:number) => {
+       setPage(value);
+   }
   return (
     <div className='w-full flex px-3 pt-5 space-x-3'>
       <div className="hidden lg:block lg:w-[25%]">
         <FilterSection/>
       </div>
-      <Divider orientation='vertical' flexItem/>
+      {isLarge && <Divider orientation='vertical' flexItem/>}
       <div className="w-full  lg:w-[75%]">
        <div className="">
         <h1 className='font-semibold text-xl lg:text-2xl text-center py-5'>WOMEN SAREES</h1>
@@ -30,6 +36,14 @@ const Product = () => {
                )
             })
         }
+       </div>
+       <div className="py-10 flex justify-center">
+        <Pagination
+        onChange={(e, value) => handlePageChange(value)}
+        count={10}
+        variant='outlined'
+        color='primary'
+        />
        </div>
       </div>
     </div>

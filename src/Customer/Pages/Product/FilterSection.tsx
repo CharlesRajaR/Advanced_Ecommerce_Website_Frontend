@@ -4,25 +4,46 @@ import { colors } from './Data/colors.ts'
 import { discount } from './Data/discount.ts'
 import { price } from './Data/price.ts'
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
+import { useSearchParams } from 'react-router-dom';
 
 const FilterSection = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedColor, setSelectedColor] = useState();
   const [selectedPrice, setSelectedPrice] = useState();
   const [selectedDiscount, setSelectedDiscount] = useState();
   const [showLess, setShowLess] = useState(true);
+
+  const updateFilterParams = (e:any) => {
+    const {value, name} = e.target;
+    if(value){
+      searchParams.set(name, value);
+    }
+    else{
+      searchParams.delete(name);
+    }
+    setSearchParams(searchParams);
+  }
+
+  const clearAllFilters = () => {
+    setSearchParams({});
+  }
+
   return (
     <div className='px-3'>
-      <div className='pb-5 '>
+      <div className='pb-5 flex justify-between'>
         <p className=' text-center font-semibold text-xl text-slate-600'>Filter By</p>
+        <Button variant='outlined' onClick={clearAllFilters}>
+          Clear All
+        </Button>
       </div>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-left">
         <div className="">
           <FormControl>
-           <FormLabel className='pt-3 pb-5 text-center text-2xl font-semibold' >Colors</FormLabel>
-           <RadioGroup 
+            <div className='text-2xl font-semibold text-slate-500'>Colors</div>
+           <RadioGroup onClick={updateFilterParams}
            aria-labelledby='demo-radio-buttons-group-label'
            defaultValue={selectedColor}
-           name='radio-buttons-group'
+           name='color'
            >
             {
               colors.slice(0, showLess === true ? 5 : colors.length).map((item, index) =>{
@@ -57,11 +78,11 @@ const FilterSection = () => {
         <Divider/>
         <div className="">
           <FormControl>
-           <FormLabel className='pt-3 pb-5 text-center text-2xl font-semibold' >Discount</FormLabel>
-           <RadioGroup 
+           <div className='text-2xl font-semibold text-slate-500'>Discount</div>
+           <RadioGroup onClick={updateFilterParams}
            aria-labelledby='demo-radio-buttons-group-label'
            defaultValue={selectedDiscount}
-           name='radio-buttons-group'
+           name='discount'
            >
             {
               discount.map((item, index) =>{
@@ -79,11 +100,11 @@ const FilterSection = () => {
         <Divider/>
         <div className="">
           <FormControl>
-           <FormLabel className='pt-3 pb-5 text-center text-2xl font-semibold' >Price</FormLabel>
-           <RadioGroup 
+           <div className='text-2xl font-semibold text-slate-500'>Price</div>
+           <RadioGroup onClick={updateFilterParams}
            aria-labelledby='demo-radio-buttons-group-label'
            defaultValue={selectedPrice}
-           name='radio-buttons-group'
+           name='price'
            >
             {
               price.map((item, index) =>{
