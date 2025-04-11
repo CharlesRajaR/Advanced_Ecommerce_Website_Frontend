@@ -10,6 +10,7 @@ import Product from './Customer/Pages/Product/Product.tsx';
 import ProductDetails from './Customer/Pages/ProductDetails/ProductDetails.tsx';
 import Cart from './Customer/Pages/Cart/Cart.tsx';
 import Checkout from './Customer/Pages/Checkout/Checkout.tsx';
+import Accounts from './Customer/Pages/Accounts/Accounts.tsx';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         {/* <Product/> */}
         {/* <ProductDetails/> */}
         {/* <Cart/> */}
-        <Checkout/>
+        {/* <Checkout/> */}
+        <Accounts/>
       </div>
     </ThemeProvider>
   );
