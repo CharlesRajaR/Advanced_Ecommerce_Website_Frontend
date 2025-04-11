@@ -89,21 +89,23 @@ const Checkout = () => {
               <div className="">
                 <p className='text-center font-semibold text-2xl text-teal-500 py-3'>CHOOSE PAYMENT GATEWAY</p>
               </div>
-              <div className="flex">
+              <Divider/>
+              <div className="flex items-center">
                 <RadioGroup
+                row
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 >
                   {
                     options.map((item) => {
                       return(
-                        <FormControlLabel 
+                        <FormControlLabel
                         key={item.label}
                         value={item.value}
                         control={<Radio/>}
                         label={
-                          <div>
-                            <img src={item.img} alt="img" />
+                          <div className='flex items-center w-[100px] h-[40px]'>
+                            <img className='object-conatin w-full h-full' src={item.img} alt="img" />
                           </div>
                         }
                         />
@@ -112,6 +114,7 @@ const Checkout = () => {
                   }
                 </RadioGroup>
               </div>
+              <Divider/>
               <div className="flex flex-col gap-1 text-lg font-semibold text-slate-500">
                  <div className="flex justify-between items-center">
                      <p>SubTotal</p>
