@@ -14,7 +14,7 @@ function App() {
       <div>
            <Routes>
             <Route path='/' element={<CustomerRouter/>}/>
-            <Route path='/seller' element={<SellerRouter/>}/>
+            <Route path='/seller/*' element={<SellerRouter/>}/>
            </Routes>
       </div>
     </ThemeProvider>
