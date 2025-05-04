@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Route, Router, Routes } from 'react-router-dom';
 import SellerRouter from './Seller/SellerRouter.tsx';
 import CustomerRouter from './Customer/CustomerRouter.tsx';
+import Admin from './Admin/Admin.tsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
            <Routes>
             <Route path='/' element={<CustomerRouter/>}/>
             <Route path='/seller/*' element={<SellerRouter/>}/>
+            <Route path='/admin/*' element={<Admin/>}/>
            </Routes>
       </div>
     </ThemeProvider>
